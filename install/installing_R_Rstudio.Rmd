@@ -1,0 +1,50 @@
+---
+title: "Installing R/RStudio For the Workshop"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output: pdf_document
+linkcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Please email Ted (laderast@ohsu.edu) if you have any problems installing R.  
+
+# Getting Started
+
+1. Download the latest R Binary from https://cran.r-project.org and install it by double clicking on the file. Here's the links for each of the different operating systems.
+
+- [Windows](https://cran.r-project.org/bin/windows/)
+- [Mac OS X](https://cran.r-project.org/bin/macosx/)
+- [Linux](https://cran.r-project.org/bin/linux/)
+
+For Windows users: IMPORTANT! Don't install R under `C:/Program Files/` as it will cause you a lot of issues with installing R packages because of the space in `Program Files`. Instead, create a directory called `R` in your base C: directory and install R there.
+
+1. Download the free version (Open Source License) of RStudio Desktop from https://www.rstudio.com/products/rstudio/download/ and install it. 
+
+1. Open up RStudio (If you'd like an introduction to the different parts of the RStudio user interface, here's a link: https://ismayc.github.io/rbasics-book/3-rstudiobasics.html). In the console window, paste the following commands:
+
+```
+install.packages(c("shiny", "dplyr", "visdat", "ggplot2", 
+"naniar", "data.table", "devtools", "DT", "shinydashboard"), dependencies=TRUE)
+
+install.packages(pkgs = "caret", 
+                 dependencies = c("Depends", "Imports"))
+
+devtools::install_github("ropensci/skimr")
+```
+
+1. Download the project workspace here: https://ohsu.box.com/s/5xjqasu02nzgjsflzjwvmrqvo4aa9ikx. If you have a zip file, make sure to expand the folder rather than just double clicking on it. 
+
+## Testing your Install Out
+
+1. Click on the `shhs_workshop.rproj` file. Make sure you can see the contents of the directory in the `files` tab on the lower right.
+
+1. Try running the following commands in the console. If you get a window that pops up, you are ready for the workshop!
+
+```
+library(shiny)
+runApp()
+```
