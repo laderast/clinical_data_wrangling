@@ -22,13 +22,13 @@ Please email Ted (laderast@ohsu.edu) if you have any problems installing R.
 
 For Windows users: IMPORTANT! Don't install R under `C:/Program Files/` as it will cause you a lot of issues with installing R packages because of the space in `Program Files`. Instead, create a directory called `R` in your base C: directory and install R there.
 
-1. Download the free version (Open Source License) of RStudio Desktop from https://www.rstudio.com/products/rstudio/download/ and install it. 
+2. Download the free version (Open Source License) of RStudio Desktop from https://www.rstudio.com/products/rstudio/download/ and install it. 
 
-1. Open up RStudio (If you'd like an introduction to the different parts of the RStudio user interface, here's a link: https://ismayc.github.io/rbasics-book/3-rstudiobasics.html). In the console window, paste the following commands:
+3. Open up RStudio. I recommend watching an introduction to the different parts of the RStudio user interface, here's a link: https://ismayc.github.io/rbasics-book/3-rstudiobasics.html). In the console window, paste the following commands:
 
 ```
 install.packages(c("shiny", "dplyr", "visdat", "ggplot2", 
-"naniar", "data.table", "devtools", "DT", "shinydashboard"), dependencies=TRUE)
+"naniar", "data.table", "devtools", "DT", "shinydashboard", "here"), dependencies=TRUE)
 
 install.packages(pkgs = "caret", 
                  dependencies = c("Depends", "Imports"))
@@ -36,13 +36,13 @@ install.packages(pkgs = "caret",
 devtools::install_github("ropensci/skimr")
 ```
 
-1. Download the project workspace here: https://ohsu.box.com/s/5xjqasu02nzgjsflzjwvmrqvo4aa9ikx. If you have a zip file, make sure to expand the folder rather than just double clicking on it. 
+4. Download the project workspace here: https://ohsu.box.com/s/q20f9aacfxh85ihi6qjn1ljcnjsvz7xi. Please email me (laderast@ohsu.edu) if you can't access it. If you have a zip file, make sure to expand the folder rather than just double clicking on it. 
 
 ## Testing your Install Out
 
-1. Click on the `shhs_workshop.rproj` file. Make sure you can see the contents of the directory in the `files` tab on the lower right.
+5. Click on the `shhs_workshop.rproj` file in the `shhs_workshop` folder. Make sure you can see the contents of the directory in the `files` tab on the lower right.
 
-1. Try running the following commands in the console. If you get a window that pops up, you are ready for the workshop!
+6. Try running the following commands in the console. If you get a window that pops up, you are ready for the workshop!
 
 ```
 library(shiny)

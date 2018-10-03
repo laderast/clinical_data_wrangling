@@ -1,0 +1,33 @@
+---
+title: "Mapping Questions to the App"
+author: "Ted Laderas"
+date: "9/21/2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview Tab
+
+  - What values are missing from the dataset overall? (Visual Summary)
+  - Are any numeric values skewed in distribution? (Tabular Summary)
+  - How is the variable defined? (Data Dictionary)
+  - What are the permissible values? (Data Dictionary)
+
+## Categorical Tab
+
+  - What percentages exist for my categorical variable? (Single Category)
+  - Is my variable associated with outcome? (Category/Outcome)
+  - Is my variable associated with other variables? (Crosstab)
+  - Are the missing values of my variable evenly distributed? (Missing Data)
+  
+## Continuous Tab
+
+  - What is the distribution of my categorical variable? (Single Continuous)
+  - Is my continuous variable associated with outcome? (Continuous/Outcome)
+  - Is my continuous variable associated with another categorical variable? (Boxplot)
+  - Is my continous variable associated with another continous variable? (Correlation)
+  - Is my continuous variable missing values? (Correlation)
+

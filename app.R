@@ -9,7 +9,6 @@ library(shiny)
 library(shinydashboard)
 library(ggplot2)
 library(dplyr)
-library(here)
 library(DT)
 library(data.table)
 library(naniar)
@@ -20,7 +19,7 @@ library(readr)
 source("R/helper.R")
 
 data_dictionary <- read.csv("data/shhs-data-dictionary-0.13.1-variables.csv")
-myDataFrame <- data.table(read_rds("data/common_data.rds"))
+myDataFrame <- data.table(read_rds("data/common_data_small.rds"))
 
 remove_categories <- c("any_cvd")
 categoricalVars <- sort(names(get_category_variables(myDataFrame)))
@@ -158,7 +157,7 @@ server <- function(input, output, session) {
     
     var <- sym(input$missingVar)
     
-    dataOut()[,categoricalVars, with=FALSE] %>%
+    dataOut() %>%
       data.frame() %>%
       gg_miss_fct(fct = !!var) + 
       theme(axis.text = element_text(size = 15))

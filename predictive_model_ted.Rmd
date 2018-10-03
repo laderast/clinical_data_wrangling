@@ -42,6 +42,7 @@ library(tidyr)
 library(dplyr)
 library(visdat)
 library(caret)
+set.seed()
 
 shhs_data <- readRDS("data/common_data_small.rds")
 ```
@@ -53,14 +54,14 @@ Look at your `environment` tab and click on the `shhs_data` line. You will be ab
 Let's look at the first few rows of the data with the `head()` command. The head command will show the first few rows.
 
 ```{r}
-head(shhs_data)
+shhs_data
 ```
 
 ## Including an image from our Data Explorer
 
 You can add an image by using what's called a markdown tag into this document. For example, if I wanted to add the image in our `images` folder called `sample_image.png`, you use this little bit of code:
 
-![Overview of Data](images/sample_image.png)
+![](images/sample_image.png)
 
 Unfortunately, the image doesn't pop-up when we're editing the notebook, but it will when we hit the "Preview" button on the notebook bar above. Try it out!
 
@@ -145,7 +146,7 @@ Let's plug in a couple of patients into our model.
 1. `patient1` is going to be older `65`, `Male`, and have a high BMI (`44`). Is this patient more likely to have cardiovascular disease or not?
 2. `patient2` is going to be younger `25`, `Female` and have a low BMI (`23`). Is this patient more likely to have cardiovascular disease or not?
 3. `patient3` is a middle aged (`42`), `Female` patient with a middling BMI (`31`)? Is she more likely to have cardiovascular disease or not?
-4. `patient41` is a middle aged (`40`), female patient, with a higher BMI (`41`). What do you think?
+4. `patient4` is a middle aged (`60`), female patient, with a higher BMI (`41`). What do you think?
 
 Let's plug in these four patients into our model. First we specify our data. We have to specify each variable separately and then glue them together as a `data.frame`.
 
@@ -154,6 +155,7 @@ pat_name <- c("patient1", "patient2", "patient3", "patient4")
 gender <- factor(c("Male", "Female", "Female", "Female"))
 age_s1 <- c(65, 25, 42, 60)
 bmi_s1 <- c(44, 23, 31, 41)
+
 
 patient_table <- data.frame(pat_name, gender, age_s1, bmi_s1)
 patient_table
@@ -220,7 +222,7 @@ Try adjusting the `cutoff` above and see how the different cells of the table ch
 Try adjusting `cutoff` below and look at what happens to Accuracy versus Balanced accuracy.
 
 ```{r}
-cutoff <- 0.4
+cutoff <- 0.55
 
 predictions2 <- predictions %>% mutate(predict_cvd = case_when(.fitted > cutoff ~ "Yes", 
                                                .fitted <= cutoff ~ "No"))
@@ -242,20 +244,28 @@ Do some detective work about `neck20`. How is it measured?
 
 ```{r}
 #remember to subset the proper variables!
-shhs_data_filtered2 <- shhs_data %>% select(#fill in with the variables! 
-  ) %>% 
+shhs_data_filtered2 <- shhs_data %>% select(any_cvd, age_s1, gender, neck20) %>% 
 #use drop_na() for now  
   drop_na()
 
-#separate into test/train sets
-shhs_train_data2 <- shhs_data_filtered2[shhs_train_index,]
-shhs_train_data2 <- shhs_data_filtered2[-shhs_train_index,]
+visdat::vis_dat(shhs_data_filtered2)
 
-basic_model2 <- glm(any_cvd ~  ,#fill your covariates here
+#separate into test/train sets
+shhs_train_index <- createDataPartition(shhs_data_filtered2$any_cvd, p=0.85, list=FALSE)
+
+
+shhs_train_data2 <- shhs_data_filtered2[shhs_train_index,]
+shhs_test_data2 <- shhs_data_filtered2[-shhs_train_index,]
+
+basic_model2 <- glm(any_cvd ~ gender + age_s1 + neck20 ,
                     family = "binomial", 
                     #we put our data into the data argument
                     data =    shhs_train_data2
 )
+
+predictions_model2 <- augment(basic_model2, newdata=shhs_test_data2,  type.predict = "response")
+
+predictions_model2 %>% ggplot(aes(x=.fitted)) + geom_histogram()
 
 #evaluate basic_model2 here
 ```

@@ -27,7 +27,7 @@ shhs_data_sub <- data.table(read_rds(here("data/common_data_small.rds")))
 ## Our Overall Goal  
 
 - Predict cardiovascular disease in our patients
-- Select appropriate variables in the data to 
+- Select appropriate variables in the data to include in our model
 - Understand what our variables mean
 - Understand interactions between variables
 - Output: List of potential variables to add to our model 
@@ -52,7 +52,7 @@ shhs_data_sub <- data.table(read_rds(here("data/common_data_small.rds")))
 
 ## Why Visualization?
 
-![Broad Street Pump](img/broadblock_original.jpg)
+<img src="img/broadblock_original.jpg" height = 450>
 
 ## Let's look first
 
@@ -95,6 +95,7 @@ runApp()
 
 1.  How many categorical variables are there?
 1.  How many missing Cardiovascular Disease Cases are there?
+1.  What is the mean age for the dataset?
 1.  How is `oahi` calculated?
 
 ## What is the Category Tab for?
@@ -115,9 +116,9 @@ runApp()
 ## Categorical Scavenger Hunt
 
 1. How many categories are there for `race`?
-1. Are the proportions balanced across `race`?
+1. Are the proportions of cvd cases balanced across `race`?
 1. If you are `male`, are you more likely to have cardiovascular disease?
-1. Is `htn_s1` 
+1. Is the proportion of missing data for `any_cvd` balanced across `race` categories? 
 
 ## Continuous Tab
 
@@ -138,7 +139,14 @@ runApp()
 
 You are now a full fledged data explorer!
 
+![https://waynepelletier.com/work/tasty-icons](img/merit.png)
+
 ## Overall
 
 - Data exploration is fun and detective work
-- Be curious!
+- Be curious! Start with a question
+- Assess the impact of adding your covariate to the model
+    - Does the distribution look like other populations?
+    - Is it associated with your outcome?
+    - Is it associated with other variables?
+    - Is the data missing in a suspicious way?

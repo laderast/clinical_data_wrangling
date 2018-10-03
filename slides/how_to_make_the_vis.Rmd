@@ -1,0 +1,77 @@
+---
+title: "How to Make the EDA Visualizations"
+author: "Ted Laderas"
+date: "9/20/2018"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+This is a small document showing you how I constructed each of the visualizations for the EDA Shiny App.
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+library(visdat)
+library(ggplot2)
+library(dplyr)
+library(skimr)
+library(naniar)
+
+shhs_data <- readRDS(here("data/common_data_small.rds"))
+```
+
+## Visdat Overview of the Data
+
+```{r}
+shhs_data %>% visdat::vis_dat()
+```
+
+## Skimr Overview of the Data
+
+```{r}
+skimr::skim(shhs_data)
+```
+
+## Categorical: Barplot of a single variable
+
+```{r}
+shhs_data %>% ggplot(aes(x=any_cvd, fill=any_cvd)) + geom_bar()
+```
+
+## Categorical: Proportional Plot of `race` vs `any_cvd`
+
+```{r}
+shhs_data %>% ggplot(aes(x=race, fill=any_cvd)) + geom_bar(position = "fill")
+```
+
+## Categorical: Missing Value Plot of `any_cvd` versus all other variables
+
+```{r}
+shhs_data %>% naniar::gg_miss_fct(fct = any_cvd)
+```
+
+## Continuous: Histogram of `age_s1`
+
+```{r}
+shhs_data %>% ggplot(aes(x=age_s1)) + geom_histogram(bins = 40)
+```
+
+## Continuous: Boxplot of `age_s1` versus `race`
+
+```{r}
+shhs_data %>% ggplot(aes(x=race, y= age_s1, fill=race)) + geom_boxplot()
+```
+
+## Continous: Scatterplot of `bmi_s1` versus `neck20`
+
+```{r}
+shhs_data %>% ggplot(aes(x=bmi_s1, y=neck20)) + geom_point() + stat_smooth(method="lm", se=FALSE)
+```
+
+## Continous: Scatterplot of `bmi_s1` versus `neck20` with missing data
+
+```{r}
+shhs_data %>% ggplot(aes(x=bmi_s1, y=neck20)) + naniar::geom_miss_point() + stat_smooth(method="lm", se=FALSE)
+```
