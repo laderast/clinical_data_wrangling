@@ -1,0 +1,40 @@
+---
+title: "Welcome to Clinical Data Wrangling"
+author: "Aurora Blucher, Nicole Weiskopf, Ted Laderas and Eilis Boudreau (PhDs all)"
+date: "9/20/2018"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Goals of this workshop
+
+1. Get familiar with the benefits and drawbacks of working with EHR data.
+2. Learn basic competencies in clinical data wrangling with a realistic clinical dataset.
+3. Learn basic competencies in exploratory data analysis (EDA) in order to identify issues in EHR data.
+
+## About Us
+
+- Intros
+
+## Code of Conduct
+
+Please read the Code of Conduct. We want to foster a positive learning environment. 
+
+## Protected Health Information
+
+- Remember, this dataset is considered Protected Health Information.
+- Don't share the data with anyone.
+
+## Group Up!
+
+Get into four groups. Get to know each other!
+
+## The Post It System
+
+Remember, the first line of defense is your team.
+
+- Red - I need help!
+- Green - Things are peachy-keen/I'm done with what you asked
