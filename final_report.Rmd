@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-```{r}
+```{r setup, include=FALSE}
 library(broom)
 library(tidyr)
 library(dplyr)
