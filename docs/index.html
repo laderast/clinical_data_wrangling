@@ -316,7 +316,7 @@ $(document).ready(function () {
 <p>The following is the site for the materials for the clinical data wrangling workshop that was held from September 21 to September 26, 2018. This was a 12 hour workshop (spread over 4 days) where students got to work with a real research dataset (the <a href="http://sleepdata.org">Sleep Heart Health Study</a> data). This is a workshop that we developed as part of an National Library of Medicine T15 training supplement in Data Science. The following is a short report describing the workshop and its outcomes.</p>
 <div id="intended-audience" class="section level2">
 <h2>Intended Audience</h2>
-<p>We designed the workshop for our incoming informatics students (clinical and biology majors) in order to introduce them to the difficulties of working with clinical data.</p>
+<p>We designed the workshop for our incoming informatics students (clinical and biology majors) in order to introduce them to the difficulties of working with clinical data. We anticipate that with a little adaptation, it should be accessible to audiences such as medical students, and other clinicians wanting to understand the nature of clinical data.</p>
 </div>
 <div id="learning-objectives" class="section level2">
 <h2>Learning Objectives</h2>
@@ -345,38 +345,334 @@ $(document).ready(function () {
 <p>We designed the workshop to be a mix of didactic lectures and active learning exercises. Where possible, we had students work in groups to answer questions about the data. These activities included a data scavenger hunt using our EDA exploration app, and a logistic modeling exercise.</p>
 <div id="day-1-outline" class="section level3">
 <h3>Day 1 Outline</h3>
-<ol style="list-style-type: decimal">
-<li>Introduction, logistics, and groups assigned (30 minutes)</li>
-<li>Biology of Sleep and Cardiovascular Disease (40 minutes, format: in-person lecture)</li>
-<li>Break Time (15 minutes)</li>
-<li>The Value of Clinical Data (15 minutes, in-person lecture)</li>
-<li>Clinical Data Quality (40 minutes, in-person lecture)</li>
-<li>Lunch (90 minutes, with optional <a href="install/installing_R_Rstudio.pdf">R setup session</a>)</li>
-<li><a href="slides/data_exploration_wrangling.html">Exploring the SHHS Dataset</a> (60 minutes, format: Data Scavenger Hunt w/ Shiny App, each team gets a task and has to show the class how to find the information)</li>
-<li>Applying the Clinical Wrangling Process: Diabetes (45 minutes, format: in-person lecture)</li>
-<li><a href="notebooks/predictive_model.nb.html">Logistic Regression Model Basics</a> (60 minutes, format: walkthrough of R Notebook)</li>
-</ol>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-fymr{font-weight:bold;border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-fymr">
+Session
+</th>
+<th class="tg-fymr">
+Lecture/Activity
+</th>
+<th class="tg-fymr">
+Format
+</th>
+<th class="tg-fymr">
+Duration
+</th>
+</tr>
+<tr>
+<td class="tg-0pky">
+0
+</td>
+<td class="tg-0pky">
+Introduction, Logistics, groups assigned
+</td>
+<td class="tg-0pky">
+NA
+</td>
+<td class="tg-0pky">
+30 min
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+1a
+</td>
+<td class="tg-0pky">
+Biology of Sleep and Cardiovascular Disease
+</td>
+<td class="tg-0pky">
+Lecture
+</td>
+<td class="tg-0pky">
+40 min
+</td>
+</tr>
+<tr>
+<td class="tg-0pky">
+Break
+</td>
+<td class="tg-0pky">
+Breaktime
+</td>
+<td class="tg-0pky">
+NA
+</td>
+<td class="tg-0pky">
+15 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+1b
+</td>
+<td class="tg-0lax">
+The Value of Clinical Data
+</td>
+<td class="tg-0lax">
+Lecture
+</td>
+<td class="tg-0lax">
+15 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+2a
+</td>
+<td class="tg-0lax">
+Clinical Data Quality Issues
+</td>
+<td class="tg-0lax">
+Lecture
+</td>
+<td class="tg-0lax">
+40 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+Break
+</td>
+<td class="tg-0lax">
+Lunch Break (with optional R install session)
+</td>
+<td class="tg-0lax">
+NA
+</td>
+<td class="tg-0lax">
+90 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+2b
+</td>
+<td class="tg-0lax">
+<a href="slides/data_exploration_wrangling.html">Exploring the Sleep Heart Health Study Dataset</a>
+</td>
+<td class="tg-0lax">
+Data<br>Scavenger<br>Hunt
+</td>
+<td class="tg-0lax">
+60 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+3a
+</td>
+<td class="tg-0lax">
+Applying the Clinical Wrangling Process: <br>Diabetes
+</td>
+<td class="tg-0lax">
+Lecture
+</td>
+<td class="tg-0lax">
+45 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+3b
+</td>
+<td class="tg-0lax">
+<a href="notebooks/predictive_model.nb.html">Logistic Regression Model Basics</a>
+</td>
+<td class="tg-0lax">
+R Notebook
+</td>
+<td class="tg-0lax">
+60 min
+</td>
+</tr>
+</table>
 </div>
 <div id="day-2" class="section level3">
 <h3>Day 2</h3>
-<ol style="list-style-type: decimal">
-<li>Question/Answer session about Logistic Regression and Modeling (50 minutes)</li>
-<li>Assignment about <code>race</code> variable (assigned to groups, take-home assignment)</li>
-</ol>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
+.tg .tg-xldj{border-color:inherit;text-align:left}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-kiyi">
+Session
+</th>
+<th class="tg-kiyi">
+Lecture/Activity
+</th>
+<th class="tg-kiyi">
+Format
+</th>
+<th class="tg-kiyi">
+Duration
+</th>
+</tr>
+<tr>
+<td class="tg-xldj">
+4a
+</td>
+<td class="tg-xldj">
+Question/Answer session about Logistic Regression Notebook
+</td>
+<td class="tg-xldj">
+Q&amp;A
+</td>
+<td class="tg-xldj">
+50 min
+</td>
+</tr>
+<tr>
+<td class="tg-xldj">
+4b
+</td>
+<td class="tg-xldj">
+Assignment about race variable (assigned to groups)
+</td>
+<td class="tg-xldj">
+Homework
+</td>
+<td class="tg-xldj">
+10 min
+</td>
+</tr>
+</table>
 </div>
 <div id="day-3" class="section level3">
 <h3>Day 3</h3>
-<ol style="list-style-type: decimal">
-<li>Discussion about <code>race</code> as a covariate, sharing of findings</li>
-<li>Overview of hypertension and how it relates to cardiovascular disease and sleep apnea</li>
-<li><a href="notebooks/final_report.nb.html">Template/R Notebook</a> given for final presentation in groups (in-class lab time, template is structured as a series of decisions.)</li>
-</ol>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
+.tg .tg-xldj{border-color:inherit;text-align:left}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-kiyi">
+Session
+</th>
+<th class="tg-kiyi">
+Lecture/Activity
+</th>
+<th class="tg-kiyi">
+Format
+</th>
+<th class="tg-kiyi">
+Duration
+</th>
+</tr>
+<tr>
+<td class="tg-xldj">
+5a
+</td>
+<td class="tg-xldj">
+Discussion about race as a covariate, sharing of findings
+</td>
+<td class="tg-xldj">
+Discussion
+</td>
+<td class="tg-xldj">
+30 min
+</td>
+</tr>
+<tr>
+<td class="tg-xldj">
+5b
+</td>
+<td class="tg-xldj">
+Overview of hypertension and how it relates to Sleep <br>Apnea/Cardiovascular Disease
+</td>
+<td class="tg-xldj">
+Lecture/Discussion
+</td>
+<td class="tg-xldj">
+30 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+5c
+</td>
+<td class="tg-0lax">
+<a href="notebooks/final_report.nb.html">Work on Final Report</a>
+</td>
+<td class="tg-0lax">
+In-class Lab time
+</td>
+<td class="tg-0lax">
+60 min
+</td>
+</tr>
+</table>
 </div>
 <div id="day-4" class="section level3">
 <h3>Day 4</h3>
-<ol style="list-style-type: decimal">
-<li>Group presentations about covariate decisions and resulting model (1 hour, present final version of R notebook). At each decision stage, teams must decide on whether or not to include covariates or not given what they have found from exploring the data and justify their decision using EDA visualizations.</li>
-</ol>
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+.tg .tg-kiyi{font-weight:bold;border-color:inherit;text-align:left}
+.tg .tg-xldj{border-color:inherit;text-align:left}
+.tg .tg-0lax{text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+<tr>
+<th class="tg-kiyi">
+Session
+</th>
+<th class="tg-kiyi">
+Lecture/Activity
+</th>
+<th class="tg-kiyi">
+Format
+</th>
+<th class="tg-kiyi">
+Duration
+</th>
+</tr>
+<tr>
+<td class="tg-xldj">
+6a
+</td>
+<td class="tg-xldj">
+Group presentations about covariate decisions and resulting model
+</td>
+<td class="tg-xldj">
+R Notebook
+</td>
+<td class="tg-xldj">
+60 min
+</td>
+</tr>
+<tr>
+<td class="tg-0lax">
+6b
+</td>
+<td class="tg-0lax">
+Final Discussion and Wrap up
+</td>
+<td class="tg-0lax">
+Discussion
+</td>
+<td class="tg-0lax">
+30 min
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div id="acknowledgements" class="section level2">
