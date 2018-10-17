@@ -1,0 +1,54 @@
+---
+title: "Shiny App for Data Exploration"
+author: "Ted Laderas"
+date: "October 10, 2018"
+output: powerpoint_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Shiny App
+
+Asks: 
+
+1. We would like to deploy the Shiny App so we can show how the data exploration works for the workshop
+1. Can we make the limited dataset sharable? If not, what would be required to make it sharable?
+1. What visualizations of the data can we share?
+
+
+## What is Shiny?
+
++ Interactive visualization application
++ hosted on http://shinyapps.io
++ Individual patient data is not exposed, just aggregate visualizations
++ Example (synthetic dataset): https://tladeras.shinyapps.io/cvdnight1/
+
+## Covariates used in the app
+
++ Only 17 covariates used in the app 
++ Full Data Dictionary is used, but can be restricted
++ Demographics:`age_s1`, `gender`, `smokstat_s1`, `bmi_s1`, `race`
++ Hypertension: `srhype`, `ace1`, `beta1`, `htnderv_s1`, `systbp`
++ Labs: `hdl`, `chol`
++ Cvd: `any_cvd`
++ Sleep: `ahi_a0h3`,`ahi_a0h4`, `oahi`, `neck20`.
+
+## Visualization Example
+
+![`race` versus `outcome`](img/1.png)
+
+## Vis example 2: Missing Data
+
+![](img/2.png)
+
+## Vis example 3: Boxplots
+
+![`age` versus `race`](img/3.png)
+
+## Links to Workshop Materials
+
++ Blog post: http://laderast.github.io/2018/10/15/clinical-data-wrangling/
++ Github Repository: https://github.com/laderast/clinical_data_wrangling
++ Website: https://laderast.github.io/clinical_data_wrangling/

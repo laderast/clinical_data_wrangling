@@ -52,13 +52,13 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-0pky">0</td>
-    <td class="tg-0pky">Introduction, Logistics, groups assigned</td>
+    <td class="tg-0pky"><a href="slides/session_0_welcome.pdf">Introduction, Logistics, groups assigned</a></td>
     <td class="tg-0pky">NA</td>
     <td class="tg-0pky">30 min</td>
   </tr>
   <tr>
     <td class="tg-0pky">1a </td>
-    <td class="tg-0pky">Biology of Sleep and Cardiovascular Disease</td>
+    <td class="tg-0pky"><a href="slides/session_1a-introduction_to_sleep_apnea.pdf">Biology of Sleep and Cardiovascular Disease</a></td>
     <td class="tg-0pky">Lecture</td>
     <td class="tg-0pky">40 min</td>
   </tr>
@@ -70,31 +70,31 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-0lax">1b</td>
-    <td class="tg-0lax">The Value of Clinical Data</td>
+    <td class="tg-0lax"><a href="slides/session_1b-the_added_value_of_clinical_data.pdf">The Value of Clinical Data</a></td>
     <td class="tg-0lax">Lecture</td>
     <td class="tg-0lax">15 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">2a</td>
-    <td class="tg-0lax">Clinical Data Quality Issues</td>
+    <td class="tg-0lax"><a href="slides/session_2a-intro_to_ehr_data_quality.pdf">Clinical Data Quality Issues</a></td>
     <td class="tg-0lax">Lecture</td>
     <td class="tg-0lax">40 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">Break</td>
-    <td class="tg-0lax">Lunch Break (with optional R install session)</td>
+    <td class="tg-0lax">Lunch Break (with optional <a href="install/installing_R_Rstudio.pdf">R install session)</a></td>
     <td class="tg-0lax">NA</td>
     <td class="tg-0lax">90 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">2b</td>
-    <td class="tg-0lax"><a href="slides/data_exploration_wrangling.html">Exploring the Sleep Heart Health Study Dataset</a></td>
+    <td class="tg-0lax"><a href="slides/session_2b-data_exploration_and_wrangling.pdf">Exploring the Sleep Heart Health Study Dataset</a></td>
     <td class="tg-0lax">Data<br>Scavenger<br>Hunt</td>
     <td class="tg-0lax">60 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">3a</td>
-    <td class="tg-0lax">Applying the Clinical Wrangling Process: <br>Diabetes</td>
+    <td class="tg-0lax"><a href="slides/session_3a_diabetes_demonstration.pdf">Applying the Clinical Wrangling Process: <br>Diabetes</a></td>
     <td class="tg-0lax">Lecture</td>
     <td class="tg-0lax">45 min</td>
   </tr>
@@ -131,7 +131,7 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-xldj">4b</td>
-    <td class="tg-xldj">Assignment about race variable (assigned to groups)</td>
+    <td class="tg-xldj"><a href="slides/session_4_race_and_ethnicity_slides.pdf">Assignment about race variable (assigned to groups)</a></td>
     <td class="tg-xldj">Homework</td>
     <td class="tg-xldj">10 min</td>
   </tr>
@@ -156,13 +156,13 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-xldj">5a</td>
-    <td class="tg-xldj">Discussion about race as a covariate, sharing of findings</td>
+    <td class="tg-xldj"><a href="slides/session_4_race_and_ethnicity_slides.pdf">Discussion about race as a covariate, sharing of findings</a></td>
     <td class="tg-xldj">Discussion</td>
     <td class="tg-xldj">30 min</td>
   </tr>
   <tr>
     <td class="tg-xldj">5b</td>
-    <td class="tg-xldj">Overview of hypertension and how it relates to Sleep <br>Apnea/Cardiovascular Disease</td>
+    <td class="tg-xldj"><a href="slides/session_5_hypertension.pdf">Overview of hypertension and how it relates to Sleep <br>Apnea/Cardiovascular Disease</a></td>
     <td class="tg-xldj">Lecture/Discussion</td>
     <td class="tg-xldj">30 min</td>
   </tr>

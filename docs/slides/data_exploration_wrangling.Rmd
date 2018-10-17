@@ -60,12 +60,6 @@ shhs_data_sub <- data.table(read_rds(here("data/common_data_small.rds")))
 - Understand the issues, not focus on coding right now
 - Build your foundation
 
-## The first few rows of our data
-
-```{r}
-datatable(shhs_data_sub[1:10,])
-```
-
 ## Running the Shiny App
 
 In your workspace, you can use `runApp()` in the console to start, or open the `app.R` file and click the `Run App` play button in the top right of the script window.
