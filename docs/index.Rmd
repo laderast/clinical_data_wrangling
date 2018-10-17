@@ -1,6 +1,10 @@
 ---
 title: Clinical Data Wrangling Workshop
 author: "Ted Laderas, Nicole Weiskopf, Aurora Blucher, and Eilis Boudreau"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 <img src="img/1.png" height="400px">
@@ -33,7 +37,7 @@ We used the [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs) data
 
 We designed the workshop to be a mix of didactic lectures and active learning exercises. Where possible, we had students work in groups to answer questions about the data. These activities included a data scavenger hunt using our EDA exploration app, and a logistic modeling exercise.
 
-### Day 1 Outline
+### Day 1
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
