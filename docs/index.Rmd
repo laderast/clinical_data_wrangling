@@ -15,6 +15,10 @@ The following is the site for the materials for the clinical data wrangling work
 
 We designed the workshop for our incoming informatics students (clinical and biology majors) in order to introduce them to the difficulties of working with clinical data. We anticipate that with a little adaptation, it should be accessible to audiences such as medical students, and other clinicians wanting to understand the nature of clinical data. 
 
+## Code of Conduct
+
+We have included our [Code of Conduct](slides/CODE_OF_CONDUCT.pdf) for the workshop. We believe that it helps make the workshop to be a more inclusive environment and encourages group learning among participants.
+
 ## Learning Objectives
 
 1. Understand the biology of sleep and sleep apnea and how the biology informs the covariates measured in the Sleep Heart Health Study
