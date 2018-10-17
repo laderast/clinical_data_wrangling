@@ -26,6 +26,8 @@ We designed the workshop for our incoming informatics students (clinical and bio
 
 We used the [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs) dataset from the [National Sleep Research Resource](https://sleepdata.org). This is a dataset of approximately 5800 patients that have over 3000 covariates. We limited our students to a smaller number of covariates (17), including our outcome of interest, cardiovascular disease.
 
+**Please note that the dataset is not currently available in the repository**. A Data Access and Use Agreement (DAUA, see below) needs to be filled out for each student who wishes to access the SHHS dataset.
+
 ## Requirements
 
 1. Students must have R/Rstudio installed (See [installation instructions](install/installing_R_Rstudio.pdf))
@@ -215,4 +217,4 @@ We are grateful for the incoming informatics students’ enthusiasm and patience
 
 ## Licensing
 
-This lesson material is shared under a Creative Commons Non-Commercial BY license. All code is shared under an Apache 2.0 License.
+This lesson material is shared under a Creative Commons Non-Commercial BY 3.0 license. All code is shared under an Apache 2.0 License.
