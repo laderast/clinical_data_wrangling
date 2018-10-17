@@ -1,6 +1,6 @@
 ---
 title: Clinical Data Wrangling Workshop
-author: "Ted Laderas, Nicole Weiskopf and Eilis Boudreau"
+author: "Ted Laderas, Nicole Weiskopf, Aurora Blucher, and Eilis Boudreau"
 ---
 
 <img src="img/1.png" height="400px">
