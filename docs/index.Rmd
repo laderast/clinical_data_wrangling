@@ -94,7 +94,7 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-0lax">3a</td>
-    <td class="tg-0lax"><a href="slides/session_3a_diabetes_demonstration.pdf">Applying the Clinical Wrangling Process: <br>Diabetes</a></td>
+    <td class="tg-0lax"><a href="slides/session_3a-diabetes_demonstration.pdf">Applying the Clinical Wrangling Process: <br>Diabetes</a></td>
     <td class="tg-0lax">Lecture</td>
     <td class="tg-0lax">45 min</td>
   </tr>
@@ -131,7 +131,7 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-xldj">4b</td>
-    <td class="tg-xldj"><a href="slides/session_4_race_and_ethnicity_slides.pdf">Assignment about race variable (assigned to groups)</a></td>
+    <td class="tg-xldj"><a href="slides/session_4-race_and_ethnicity_slides.pdf">Assignment about race variable (assigned to groups)</a></td>
     <td class="tg-xldj">Homework</td>
     <td class="tg-xldj">10 min</td>
   </tr>
@@ -156,13 +156,13 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-xldj">5a</td>
-    <td class="tg-xldj"><a href="slides/session_4_race_and_ethnicity_slides.pdf">Discussion about race as a covariate, sharing of findings</a></td>
+    <td class="tg-xldj"><a href="slides/session_4-race_and_ethnicity_slides.pdf">Discussion about race as a covariate, sharing of findings</a></td>
     <td class="tg-xldj">Discussion</td>
     <td class="tg-xldj">30 min</td>
   </tr>
   <tr>
     <td class="tg-xldj">5b</td>
-    <td class="tg-xldj"><a href="slides/session_5_hypertension.pdf">Overview of hypertension and how it relates to Sleep <br>Apnea/Cardiovascular Disease</a></td>
+    <td class="tg-xldj"><a href="slides/session_5-hypertension.pdf">Overview of hypertension and how it relates to Sleep <br>Apnea/Cardiovascular Disease</a></td>
     <td class="tg-xldj">Lecture/Discussion</td>
     <td class="tg-xldj">30 min</td>
   </tr>
