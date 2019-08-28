@@ -1,0 +1,73 @@
+---
+title: "Session 2: Looking at the SHHS data"
+output: html_notebook
+---
+
+Welcome to your first R Notebook! This is a way to start executing R Code. We're going to step through an introductory exploration of our dataset. 
+
+The grey block below is a *code block*. Try pressing the green play button on the top right. What do you think is going to happen?
+
+```{r}
+3 + 10 
+```
+
+We're going to start looking at the Sleep Health Heart Study (SHHS) Data. To do so, we first need to 
+
+1) load some software packages to help us explore the data (using the `library()` command), and 
+2) load the data and data dictionary (using `readRDS()`, which reads in R's internal data format and `read.csv()`, which reads in a Comma-Separated-Value (`csv`) file.
+
+Execute this code block.
+
+```{r}
+library(here)
+library(burro)
+
+sleep_data <- readRDS(here("data/common_data_small.rds"))
+data_dictionary <- read.csv(here("data/shhs-data-dictionary-0.13.1-variables.csv"))
+```
+
+# Looking at the tabular form of the data
+
+Our data is loaded as a table (also known as a `data.frame`) into R. A useful command to look at the data in its tabular form is `View()`. Try it out by running the code block below. Another window should pop up and you should see an Excel-like table. 
+
+```{r}
+View(sleep_data)
+```
+
+# What are our variables and what do they mean?
+
+
+
+# Running `burro` on our dataset
+
+Now we can start looking at the data in a more summarized format. Try running the code chunk below to open up `burro`, which is a data explorer that we're going to use to ask questions. We know our outcome variable is.
+
+When you want to continue on in the notebook, be sure to hit the red stop button on the top right of the code block.
+
+```{r}
+burro::explore_data(dataset= sleep_data, 
+             outcome_var = "any_cvd", 
+             data_dictionary = data_dictionary)
+```
+
+# Some Questions for the Overview Panel (5-10 minutes)
+
+As a group, take a look at the following questions and attempt to answer them from the overview panel. 
+
+As you do, take a note of which tab (`Visual Summary`, `Tabular Summary`, and `Data Dictionary`) you found the information in.
+
+Be sure to use your post-it notes if you're confused or need help!
+
+1.How many categorical variables (also called `factor`s) are there in our dataset?
+2.How many Missing Cardiovascular Disease Cases are there?
+3. What is the mean age for the dataset? Is it what you expected?
+4. How is the `oahi` variable calculated?
+
+```{r}
+
+```
+
+# The Category Panel
+
+# Some Questions for the Category Panel (5-10 minutes)
+
