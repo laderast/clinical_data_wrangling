@@ -3,12 +3,32 @@ title: "Session 2: Looking at the SHHS data"
 output: html_notebook
 ---
 
-Welcome to your first R Notebook! This is a way to start executing R Code. We're going to step through an introductory exploration of our dataset. 
+## Before you start
 
-There are two main components to an R Notebook:
+Save this notebook under a different name in your `shhs_workshop` folder. That way, you have a backup just in case. 
 
-1) *Text blocks*, which don't contain code, they're text. You can use them to take notes about what you are doing, and explain code in the context of a presentation.
-2) *Code blocks*, which contain code that you can run, or execute. 
+## What is an R Notebook?
+
+An R Notebook is a way to run R code and save the output (such as graphs and tables) in the same document. Make sure that you have opened the project file (`shhs_workshop.rproj`) in RStudio before you do anything. This will set you up so R knows where the data is.
+
+There are two main formats for a R Notebook. The first are known as the *markdown chunks*, which are mostly text, and let you add commentary about your findings. The other format is the *code chunk*, which is started by the three backticks (\`\`\`) and a `{r}`, such as the code block below. Usually, we want the code block to give us an output, such as a table or a graph. However, the code isn't run until we hit the play button. This is really important to know. 
+
+R Notebooks are presented two ways: as an editable document (which is what you have here), and a preview document. You will be able to see the preview document by hitting the `Preview` button. Try hitting the "Preview" button now.
+
+## Important!
+
+Be sure to go slowly through the notebook slowly and read the code. If you just press play without reading and understanding the code, you will miss out on the learning! Talk about the code blocks with your group partner.
+
+## Getting Help
+
+If you're confused about a function, such as `head`, you can run `?head` (adding a question mark to the beginning of the function) to get help about that function. Try running the command below by hitting the play button on the top right of the code chunk. The help window for the function should open on the right.
+
+```{r}
+?head
+```
+
+## Our first code block
+
 The grey block below is a *code block*. Try pressing the green play button on the top right. What do you think is going to happen?
 
 ```{r}

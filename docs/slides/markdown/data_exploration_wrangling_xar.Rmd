@@ -27,9 +27,9 @@ mono_dark(
 
 # Learning Objectives for This Session
 
-1. Learn about the purpose of exploratory data analysis (EDA)
-2. Learn how to do EDA using `burro`
-3. Answer questions about associations/correlations of variables with cardiovascular disease (CVD)
+1. *Understand* the purpose of exploratory data analysis (EDA)
+2. *Learn* how to do EDA using `burro`
+3. *Answer questions* about associations/correlations of variables with cardiovascular disease (CVD)
 
 ---
 
@@ -89,6 +89,11 @@ mono_dark(
 - Correlations
 
 If you're interested in it, you can see more about it here: http://laderast.github.io/burro
+
+---
+class: center, middle
+
+# Notebook Time
 
 ---
 # Congratulations
