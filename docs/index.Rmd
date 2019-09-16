@@ -1,6 +1,6 @@
 ---
 title: Clinical Data Wrangling Workshop
-author: "Ted Laderas, Nicole Weiskopf, Aurora Blucher, and Eilis Boudreau"
+author: "Ted Laderas, Nicole Weiskopf, Aaron Coyner, and Eilis Boudreau"
 output: 
   html_document:
     toc: true
@@ -9,7 +9,9 @@ output:
 
 <img src="img/1.png" height="400px">
 
-The following is the site for the materials for the clinical data wrangling workshop that was held from September 21 to September 26, 2018. This was a 12 hour workshop (spread over 4 days) where students got to work with a real research dataset (the [Sleep Heart Health Study](http://sleepdata.org) data). This is a workshop that we developed as part of an National Library of Medicine T15 training supplement in Data Science. The following is a short report describing the workshop and its outcomes.
+The following is the site for the materials for the clinical data wrangling workshop. This is a 12 hour workshop (spread over 4 days) where students got to work with a real research dataset (the [Sleep Heart Health Study](http://sleepdata.org) data). 
+
+This is a workshop that we developed as part of an National Library of Medicine T15 training supplement in Data Science. The following is a short report describing the workshop and its outcomes.
 
 ## Intended Audience
 
@@ -35,8 +37,21 @@ We used the [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs) data
 ## Requirements
 
 1. Students must have R/Rstudio installed (See [installation instructions](install/installing_R_Rstudio.pdf))
+
+Additionally, students should run the following commands in their console to install needed packages:
+
+```{r eval=FALSE}
+install.packages("remotes")
+#install the data explorer
+remotes::install_github("laderast/burro")
+#install the caret package 
+install.packages(pkgs = "caret", dependencies = c("Depends", "Imports"))
+```
+
 2. Students must fill out a [Data Access and Use Agreement for NSRR](RequestingDataAccessInstructions.pdf)
+
 3. Students must have training covering basics of PHI and HIPAA (required by NSRR for their Data Access and Use Agreement)
+
 4. Students should [clone or download the repo](http://github.com/laderast/shhs_workshop)
 
 ## Workshop Format
@@ -62,7 +77,7 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-0pky">0</td>
-    <td class="tg-0pky"><a href="slides/session_0_welcome.pdf">Introduction, Logistics, groups assigned</a></td>
+    <td class="tg-0pky"><a href="slides/session_0_welcome.pdf">Introduction, Logistics, Groups assigned</a></td>
     <td class="tg-0pky">NA</td>
     <td class="tg-0pky">30 min</td>
   </tr>
@@ -86,9 +101,9 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-0lax">2a</td>
-    <td class="tg-0lax"><a href="slides/session_2a-intro_to_ehr_data_quality.pdf">Clinical Data Quality Issues</a></td>
-    <td class="tg-0lax">Lecture</td>
-    <td class="tg-0lax">40 min</td>
+    <td class="tg-0lax"><a href="slides/session_2b-data_exploration_and_wrangling.pdf">Exploring the Sleep Heart Health Study Dataset</a></td>
+    <td class="tg-0lax">Data<br>Scavenger<br>Hunt</td>
+    <td class="tg-0lax">60 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">Break</td>
@@ -98,9 +113,9 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   </tr>
   <tr>
     <td class="tg-0lax">2b</td>
-    <td class="tg-0lax"><a href="slides/session_2b-data_exploration_and_wrangling.pdf">Exploring the Sleep Heart Health Study Dataset</a></td>
-    <td class="tg-0lax">Data<br>Scavenger<br>Hunt</td>
-    <td class="tg-0lax">60 min</td>
+    <td class="tg-0lax"><a href="slides/session_2a-intro_to_ehr_data_quality.pdf">Clinical Data Quality Issues</a></td>
+    <td class="tg-0lax">Lecture</td>
+    <td class="tg-0lax">40 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">3a</td>

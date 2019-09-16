@@ -6,18 +6,8 @@ output: slidy_presentation
 ---
 
 ```{r setup, include=FALSE}
-library(shiny)
-library(shinydashboard)
-library(ggplot2)
-library(dplyr)
+library(burro)
 library(here)
-library(DT)
-library(data.table)
-library(naniar)
-library(visdat)
-library(skimr)
-library(readr)
-
 knitr::opts_chunk$set(echo = FALSE)
 data_dictionary <- read.csv(here("data/shhs-data-dictionary-0.13.1-variables.csv"))
 shhs_data_sub <- data.table(read_rds(here("data/common_data_small.rds")))

@@ -27,24 +27,18 @@ For Windows users: IMPORTANT! Don't install R under `C:/Program Files/` as it wi
 3. Open up RStudio. I recommend watching an introduction to the different parts of the RStudio user interface, here's a link: https://ismayc.github.io/rbasics-book/3-rstudiobasics.html). In the console window, paste the following commands:
 
 ```
-install.packages(c("shiny", "dplyr", "visdat", "ggplot2", 
-"naniar", "data.table", "devtools", "DT", "shinydashboard", "here"), dependencies=TRUE)
-
+install.packages("remotes")
+remotes::install_github("laderast/burro")
 install.packages(pkgs = "caret", 
                  dependencies = c("Depends", "Imports"))
-
-devtools::install_github("ropensci/skimr")
 ```
-
-4. Download the project workspace here: https://ohsu.box.com/s/q20f9aacfxh85ihi6qjn1ljcnjsvz7xi. Please email me (laderast@ohsu.edu) if you can't access it. If you have a zip file, make sure to expand the folder rather than just double clicking on it. 
 
 ## Testing your Install Out
 
-5. Click on the `shhs_workshop.rproj` file in the `shhs_workshop` folder. Make sure you can see the contents of the directory in the `files` tab on the lower right.
-
-6. Try running the following commands in the console. If you get a window that pops up, you are ready for the workshop!
+4. Try running the following commands in the console. If you get a window that pops up, you are ready for the workshop!
 
 ```
-library(shiny)
-runApp()
+library(burro)
+library(ggplot2)
+burro::explore_data(diamonds[1:500,])
 ```
