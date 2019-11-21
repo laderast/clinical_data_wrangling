@@ -1,8 +1,10 @@
 ---
 title: "Your Final Model"
 author: "Put Author Names Here"
-output: html_notebook
-editor_options: 
+output:
+  html_document:
+    df_print: paged
+editor_options:
   chunk_output_type: inline
 ---
 
@@ -12,8 +14,10 @@ library(tidyr)
 library(dplyr)
 library(visdat)
 library(caret)
+library(here)
 
-shhs_data <- readRDS("data/common_data_small.rds")
+source(here("R/helper.R"))
+shhs_data <- readRDS(here("data/common_data_small.rds"))
 ```
 
 In this notebook, you will compile your following report. For each step, show one figure that justifies your inclusion or exclusion of variables. 
@@ -72,8 +76,20 @@ Don't worry about removing variables from the model at each step. We're only add
 #put model code here
 ```
 
+## Step 5: How do you suggest the model be used?
 
-## Step 5: Evaluation of Final Model
+Choose a use case for your model:
+
+A) You are a 45 year-old female with an increased BMI who recently quit smoking. You know you ought to exercise some more and improve your diet, but your screen says you're negative for cardiovascular disease.
+
+B) You are a healthcare provider at a large healthcare organization. You want to make sure that you don't miss any potentical CVD patients.
+
+*Pick one of the above situations and talk about whether you want to prioritize sensitivity or specificity. Then use those guidelines to set a probability threshold.*
+
+Put your answer here:
+
+
+## Step 6: Evaluation of Final Model
 
 *Assess the impact of selecting complete cases for your covariate. If you like, you can show a before/after `vis_dat` for your set of variables (before dropping NAs and after dropping NAs). At the very least, show the number of rows before and after.*
 
@@ -88,5 +104,3 @@ Don't worry about removing variables from the model at each step. We're only add
 ```
 
 *Were the sleep covariates (`neck20`, `ahi_a0h3`, and `ahi_a0h4`) useful in predicting `any_cvd`? Talk about why or why not.*
-
-*Given your final results, how would you recommend the model be used?* 
