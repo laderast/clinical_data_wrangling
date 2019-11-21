@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
   <head>
-    <title>Welcome to Clinical Data Wrangling</title>
+    <title>Exploring the Sleep Heart Health Study data</title>
     <meta charset="utf-8" />
-    <meta name="author" content="Eilis Boudreau, Nicole Weiskopf, Ted Laderas and Aaron Coyner" />
+    <meta name="author" content="Ted Laderas" />
     <meta name="date" content="2019-09-18" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -11,8 +11,8 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Welcome to Clinical Data Wrangling
-### Eilis Boudreau, Nicole Weiskopf, Ted Laderas and Aaron Coyner
+# Exploring the Sleep Heart Health Study data
+### Ted Laderas
 ### 2019-09-18
 
 ---
@@ -22,79 +22,115 @@ class: center, middle, inverse, title-slide
 
 
 
-# Goals of this workshop
+# Learning Objectives for This Session
 
-1. Understand the benefits and drawbacks of working with electronic health record (EHR) data.
-2. Learn basic competencies in clinical data wrangling with a realistic clinical dataset.
-3. Learn basic competencies in exploratory data analysis (EDA) in order to identify issues in EHR data.
-
----
-# About Us
-
-- Intros
+1. *Understand* the purpose of exploratory data analysis (EDA)
+2. *Learn* how to do EDA using `burro`
+3. *Answer questions* about associations/correlations of variables with cardiovascular disease (CVD)
 
 ---
 
-# Code of Conduct
+# Our Overall Goal  
 
-Please read the Code of Conduct. We want to foster a positive learning environment. 
-
-- Respect how each other learns
-- Help each other learn
-- Don't belittle each other
-
----
-
-# Protected Health Information
-
-- Remember, this dataset is considered Protected Health Information.
-- Don't share the data with anyone.
-
----
-# Today's Schedule (SON 116)
-
-- 8:30 - 9:00 R/Rstudio Install session
-- 9:00 - 9:15 Introduction
-- 9:15 – 9:55 Session 1a: Learning about Sleep Data
-- 9:55 - 10:15 Session 1b: The Value of Clinical Data
-- 10:15 – 10:30 Break
-- 10:30 – 12 Session 2a: Exploring the Dataset with `burro`
-- 12:00 - 1:00 PM: Lunch Break (on your own)
-- 1:00 PM – 2:00 PM Session 2b: Understanding the Data
-- 2:00 - 2:15 Break
-- 2:15 – 4:00 Session 3: Starting to build a predictive model with the
-R Notebook
-- 4:00-4:30 Discussion of Day 1/Wrap up
-
----
-# Future Sessions
-
-- Day 2 (Tuesday), Session 4: 1-2 PM KCRB 1000
-    - Q &amp; A about modeling
-    - Discussion about `race` as a variable
-- Day 3 (Wednesday), Session 5: 2:00-5:00 PM KCRB 1000
-    - Discussion about hypertension
-    - Work on Final Presentation 
-- Day 4 (Thursday), Session 6: 3:30-5:30 BICC 124
-    - Final Presentation about Data
----
-
-## It's Dangerous to Learn Alone
-
-Pair up together and get to know each other:
-
-- Your Name
-- What do you want to learn from this workshop?
-- Would you rather be a Pirate or Ninja? Why?
+- Predict cardiovascular disease in our patients
+- Select appropriate variables in the data to include in our model
+- Understand what our variables mean
+- Understand interactions between variables
+- Output: List of potential variables to add to our model 
 
 ---
 
-## The Post It System
+# What is Exploratory Data Analysis?
 
-Remember, the first line of defense is your team.
+- Pioneered by John Tukey
+- Detective work on your data
+- An *attitude* towards data, not just techniques
+- 'Find patterns, reveal structure, and make tenative model assessments (Behrens)'
 
-- Red - I need help!
-- Yellow - Things are peachy-keen/I'm done with what you asked
+---
+
+# Remember
+
+"Exploratory data analysis can never be the whole story, but nothing else can serve as the foundation stone."
+- John Tukey, *Exploratory Data Analysis*
+
+---
+
+# Why Data Exploration?  
+
+- Need to be aware of issues in the data!
+
+![Systolic Blood Pressure](img/F1.large.jpg)
+
+---
+
+# Why Visualization?
+
+&lt;img src="img/broadblock_original.jpg" height = 450&gt;
+
+---
+
+# Let's look first
+
+- Visualization is a gateway
+- Understand the issues, not focus on coding right now
+- Build your foundation, then start getting technical
+
+---
+# Burro
+
+`burro` is a data explorer package we'll use to examine issues in our dataset. It opens up a dataset and lets us explore different aspects of it:
+
+- Missing data
+- Associations
+- Correlations
+
+If you're interested in it, you can see more about it here: http://laderast.github.io/burro
+
+---
+
+# Workflow for selecting variables
+
+Ultimately, in our EDA, we want to make some decisions about which variables we think are useful in predicting cardiovascular disease:
+
+1. **Missingness**: are there too many missing cases in our variable?
+2. **Usefulness**: is there an association or correlation with our outcome?
+3. **Association:** How associated is our variable with other variables in the model? Should we choose one or the other?
+4. **Clinical/domain specific considerations**: We'll talk about this in the next session.
+
+---
+class: center, middle
+
+# Notebook Time
+
+## Double click `shhs_workshop.Rproj` in `shhs_workshop` directory
+## Open up `session2-data_exploration.Rmd` in RStudio Project
+
+---
+# Congratulations
+
+You are now a full fledged data explorer!
+
+![https://waynepelletier.com/work/tasty-icons](img/merit.png)
+
+---
+
+# Overall
+
+- Data exploration is fun and detective work
+- Be curious! Start with a question
+- Assess the impact of adding your covariate to the model
+    - Does the distribution look like other populations?
+    - Is it associated with your outcome?
+    - Is it associated with other variables?
+    - Is the data missing in a suspicious way?
+
+---
+# Think about these questions about the data
+
+- How is hypertension measured in the SHHS data?
+- What is the relationship between Apnea Hypopnea Index (AHI) and cardiovascular disease?
+- What does neck circumference have to do with sleep apnea?
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

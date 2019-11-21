@@ -29,7 +29,7 @@ For Windows users: IMPORTANT! Don't install R under `C:/Program Files/` as it wi
 ```
 install.packages("remotes")
 remotes::install_github("laderast/burro")
-install.packages(pkgs = "caret", 
+install.packages(pkgs = c("caret", "plotly"), 
                  dependencies = c("Depends", "Imports"))
 ```
 

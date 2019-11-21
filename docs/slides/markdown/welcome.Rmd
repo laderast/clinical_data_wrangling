@@ -53,10 +53,11 @@ Please read the Code of Conduct. We want to foster a positive learning environme
 - Don't share the data with anyone.
 
 ---
-# Today's Schedule
+# Today's Schedule (SON 116)
 
-- 9:00 - 9:15 These Slides
-- 9:15 – 9:55 Session 1a: Learning about Sleep Data and clinical data
+- 8:30 - 9:00 R/Rstudio Install session
+- 9:00 - 9:15 Introduction
+- 9:15 – 9:55 Session 1a: Learning about Sleep Data
 - 9:55 - 10:15 Session 1b: The Value of Clinical Data
 - 10:15 – 10:30 Break
 - 10:30 – 12 Session 2a: Exploring the Dataset with `burro`

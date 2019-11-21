@@ -42,7 +42,6 @@ print("this is a code block")
 
 ```
 
-
 # Starting Out
 
 We're going to start looking at the Sleep Health Heart Study (SHHS) Data. To do so, we first need to:
@@ -171,7 +170,22 @@ burro::explore_data(dataset= sleep_data,
              data_dictionary = data_dictionary)
 ```
 
-# Subsetting using `filter()`
+# Workflow for selecting variables
+
+Ultimately, in our EDA, we want to make some decisions about which variables we think are useful in predicting cardiovascular disease:
+
+1) **Missingness**: are there too many missing cases in our variable?
+2) **Usefulness**: is there an association or correlation with our outcome?
+3) **Association:** How associated is our variable with other variables in the model? Should we choose one or the other?
+4) **Clinical/domain specific considerations**: We'll talk about this in the next session.
+
+# Optional Section
+
+The following section is optional.
+
+# Subsetting using `filter()` (Optional)
+
+This section is optional, but may be useful in thinking about the data.
 
 What if we're interested in a particular group, such as only `Female`s?
 
@@ -194,7 +208,7 @@ burro::explore_data(dataset= subset_data, outcome_var = "any_cvd",
                     data_dictionary = data_dictionary)
 ```
 
-Try out subsetting the data by copying the code block above.
+Try out subsetting the data by copying the code block above. Choose a different subset, such as within `race`
 
 ```{r}
 

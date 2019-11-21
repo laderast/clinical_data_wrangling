@@ -1,6 +1,5 @@
 ---
 title: "Exploring the Sleep Heart Health Study data"
-subtitle: "\u2694 <br/>with xaringan and xaringanthemer"  
 author: "Ted Laderas"
 date: '`r Sys.Date()`'
 output:
@@ -91,9 +90,23 @@ mono_dark(
 If you're interested in it, you can see more about it here: http://laderast.github.io/burro
 
 ---
+
+# Workflow for selecting variables
+
+Ultimately, in our EDA, we want to make some decisions about which variables we think are useful in predicting cardiovascular disease:
+
+1. **Missingness**: are there too many missing cases in our variable?
+2. **Usefulness**: is there an association or correlation with our outcome?
+3. **Association:** How associated is our variable with other variables in the model? Should we choose one or the other?
+4. **Clinical/domain specific considerations**: We'll talk about this in the next session.
+
+---
 class: center, middle
 
 # Notebook Time
+
+## Double click `shhs_workshop.Rproj` in `shhs_workshop` directory
+## Open up `session2-data_exploration.Rmd` in RStudio Project
 
 ---
 # Congratulations
@@ -113,7 +126,7 @@ You are now a full fledged data explorer!
     - Is it associated with your outcome?
     - Is it associated with other variables?
     - Is the data missing in a suspicious way?
-    
+
 ---
 # Think about these questions about the data
 

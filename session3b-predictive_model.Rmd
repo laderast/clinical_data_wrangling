@@ -7,6 +7,14 @@ editor_options:
 
 In this R notebook, we're going to learn the basics of predictive modeling. 
 
+## Learning Objectives of this Notebook
+
+1. Understand that model building involves selecting explanatory variables
+2. Understand the impact of missing values on building a model.
+3. Build a simple model to explain cardiovascular disease
+4. Evaluate the model in terms of our own priorities and values 
+5. Compare model performance with another model
+
 ## First Things First
 
 The first thing to do is to load the data into your workspace. Click the `play` button on the below code chunk. We first load in some packages: `broom`, `tidyr`, `dplyr`, and `visdat`. Then we're going to load our data using the `read_rds` function. We use the `<-` to *assign* our data into the `shhs_data` object. 
@@ -19,7 +27,7 @@ library(visdat)
 library(caret)
 library(here)
 
-shhs_data <- readRDS("data/common_data_small.rds")
+shhs_data <- readRDS(here("data/common_data_small.rds"))
 ```
 
 ## Show the first few rows of the data
@@ -30,7 +38,7 @@ Let's look at the first few rows of the data with the `head()` command. The head
 head(shhs_data)
 ```
 
-If you want to see the full table, you can use the `View()` command:
+Remember, if you want to see the full table, you can use the `View()` command:
 
 ```{r}
 View(shhs_data)
@@ -48,7 +56,12 @@ Unfortunately, the image doesn't pop-up when we're editing the notebook, but it 
 
 Ok, now we're going to build a simple predictive model with our covariates. We're going to use the `select` function in the `dplyr` package to pick our variables from the larger dataset. This is important to do beforehand because we're going to select the complete cases in our data to model (see below).
 
-This will seem weird at first, but the `%>%` is what's called a `pipe` and lets us flow our data from one function to another. 
+This will seem weird at first, but the `%>%` is what's called a `pipe` and lets us flow our data from one function to another. When I read my code out loud, I usually read it as "then".
+
+For example, I would read the following statement as:
+
+I took `shhs_data` and THEN
+I only `select`ed the `any_cvd`, `age_s1`, `gender` and `bmi_s1` columns
 
 Think about it: which variables are we selecting? What is our outcome we're trying to predict?
 
@@ -66,7 +79,7 @@ visdat::vis_dat(shhs_data_model)
 
 ## What are you going to do about `NA`s?
 
-Ugh. There are NAs in our data! We're going to use the `drop_na` function to remove all rows that are not complete. 
+Ugh. There are NAs (missing values) in our data! We're going to use the `drop_na` function to remove all rows that are not complete. 
 
 ```{r}
 shhs_data_model_filtered <- shhs_data_model %>% tidyr::drop_na()
@@ -76,7 +89,7 @@ visdat::vis_dat(shhs_data_model_filtered)
 
 ## Separating out our data
 
-Ok, now we have to separate our data into two sets: the *training* set and the *test* set.
+Ok, now we have to separate our data into two sets: the *training* set and the *test* set. 
 
 1. Training set: a set of data with which we build (or train) our model with. 
 2. Test set: a set of data with which we test the predictive power of our model.
@@ -90,9 +103,13 @@ shhs_test_data <- shhs_data_model_filtered[-shhs_train_index,]
 
 ```
 
+Show the number of rows in our training data:
+
 ```{r}
 nrow(shhs_train_data)
 ```
+
+Show the number of rows in our test data:
 
 ```{r}
 nrow(shhs_test_data)
@@ -102,7 +119,11 @@ nrow(shhs_test_data)
 
 Here we're going to build a basic model with `any_cvd` as our outcome (what we want to predict), and `shhs_train_data` as our data. 
 
-Take a look at how we build the model below. The first thing we need to specify is our *forumla*. One of the most confusing things about R is the formula interface. The thing to remember is that formulas have a certain form. If `Y` is our dependent variable and `X1`, `X2` are independent variables, then the formula to predict `Y` has the format `Y ~ X1 + X2`. Usually these variables come from a data.frame, which is supplied by the `data` argument to the function. Note that we don't need quotes to refer to the variables in the `data.frame`.
+Take a look at how we build the model below. The first thing we need to specify is our *forumla*. 
+
+One of the most confusing things about R is the formula interface. The thing to remember is that formulas have a certain form. If `Y` is our dependent variable and `X1`, `X2` are independent variables, then the formula to predict `Y` has the format `Y ~ X1 + X2`. 
+
+Usually these variables come from a data.frame, which is supplied by the `data` argument to the function. Note that we don't need quotes to refer to the variables in the `data.frame`.
 
 ```{r}
 basic_model <- glm(#put your formula below
@@ -113,8 +134,6 @@ basic_model <- glm(#put your formula below
                    data =    shhs_train_data
                    )
 ```
-
-Show the coefficients of the model with the `tidy` function from `broom`. Each row of this is a predictor in our model, and we focus on two columns. 
 
 ## Predictive model
 
@@ -153,7 +172,9 @@ pat_table_aug %>% ggplot(aes(x=pat_name, y=.fitted, fill=pat_name)) +
   geom_bar(stat="identity") + ggtitle("Predicted probability for each patient")
 ```
 
-One thing to note: even though we thought patient 1 had a high probability of CVD, they are only predicted to have a 40% probability of having CVD. This suggests that our model is not completely predicting with 100% certainty.
+One thing to note: even though we though patient 1 had a high probability of CVD, they are only predicted to have a 40% probability of having CVD. This suggests that our model is not completely predicting with 100% certainty. This is to be expected, because there are many other types of data we are not capturing that may explain the remainder of the probability. 
+
+One such data point might be hours of exercise a week, and another might be diet.
 
 Also, patient 3, which we thought might be on the cusp of the predicted probability, actually has a low predicted probability! What about patient 4?
 
@@ -172,6 +193,11 @@ What if we plug in our test set into the model? How are the predicted probabilit
 ```{r}
 predictions <- augment(basic_model, newdata = shhs_test_data, type.predict = "response")
 predictions
+```
+
+Plot the histogram of probabilities:
+
+```{r}
 predictions %>% ggplot(aes(x=.fitted)) + geom_histogram()
 ```
 
@@ -222,12 +248,14 @@ Do some detective work about `neck20`. How is it measured?
 
 ```{r}
 #remember to subset the proper variables!
-shhs_data_filtered2 <- shhs_data %>% select(#fill in with the variables! 
-  ) %>% 
+shhs_data_filtered2 <- shhs_data %>% 
+  select(#fill in with the variables! 
+    ) %>% 
 #use drop_na() for now  
   drop_na()
 
 #separate into test/train sets
+#remember, we're just reusing the partitions from above
 shhs_train_data2 <- shhs_data_filtered2[shhs_train_index,]
 shhs_train_data2 <- shhs_data_filtered2[-shhs_train_index,]
 

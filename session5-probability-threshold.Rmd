@@ -1,0 +1,142 @@
+---
+title: "Session 5: Understanding the Probability Threshold"
+author: "Ted Laderas"
+date: "`r Sys.Date()`"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(broom)
+library(tidyr)
+library(dplyr)
+library(visdat)
+library(caret)
+library(here)
+source(here("R/helper.R"))
+
+shhs_data <- readRDS(here("data/common_data_small.rds"))
+```
+
+# Learning Objectives
+
+1. Understand the role of *sensitivity* and *specificity* and how they prioritize different errors.
+2. Utilize perspectives and values of different stakeholders to place a priority on sensitivity or specificity
+3. Utilize this priority to select a probability threshold for our model.
+
+# Building our initial model again.
+
+In this notebook, we're going to build our first model again, and look at the effect of adjusting the cutoff. 
+
+To do so, we need to build our model again.
+
+```{r}
+shhs_data_model <- shhs_data %>% select(any_cvd, age_s1, gender, bmi_s1)
+head(shhs_data_model)
+
+shhs_data_model_filtered <- shhs_data_model %>% tidyr::drop_na()
+
+# partition the data into test and train sets
+shhs_train_index <- caret::createDataPartition(shhs_data_model_filtered$any_cvd, p=0.85, list=FALSE)
+shhs_train_data <- shhs_data_model_filtered[shhs_train_index,]
+shhs_test_data <- shhs_data_model_filtered[-shhs_train_index,]
+
+#Build our model
+basic_model <- glm(
+                   formula = any_cvd ~ gender + age_s1 + bmi_s1, 
+                   # binomial
+                   family = "binomial", 
+                   #we put our data into the data argument
+                   data =    shhs_train_data
+                   )
+
+predictions <- broom::augment(basic_model, newdata = shhs_test_data, type.predict = "response")
+
+predictions
+
+model_predicted_prob <- predictions %>% pull(.fitted)
+```
+
+## Thinking about the cutoff
+
+To actually use our regression model, we need to adjust the cutoff depending on our stakeholder's values. These values are different depending on who these stakeholders are.
+
+What do I mean by values? It has to do with how we prioritize *false positives* and *false negatives*. In selecting a threshold, we need to decide whether catching false positives or false negatives are important to us. 
+
+If I were a patient, and I was given a *false positive*, what are the consequences? That is, if I were told I had cardiovascular disease, and it wasn't true. One might argue that because of the possible interventions (change in diet, exercise, and medication), the impact would be relatively small for the patient. 
+
+That is, if I was told that I have cardiovascular disease, I might change my diet, exercise more, and take some statins. The impact of doing these interventions on my quality of life is much less drastic than if I had a *false positive* for a breast cancer test. 
+
+For a positive breast cancer screen, the interventions are much more drastic (radiation treatment, surgery, chemotherapy), and the impact on my quality of life is much more. 
+
+What about false negatives? Think of the impact of a false negative on you if we were testing for cardiovascular disease. What would be the consequences?
+
+In the final presentation, we're going to ask you to think about what your values are for different stakeholders: 
+
+1) individual patients and
+2) at the clinician level. 
+
+## Now we've decided our values
+
+As a patient, I have decided that concentrating on false negatives are more important, because I could be at risk and the impact of a false negative (having untreated heart disease) is way more drastic than the impact of a false positive. 
+
+We can adjust our cutoff and see how it impacts the sensitivity and specificity of our model. Depending on our priorities, we will adjust the cutoff to maximize one or the other.
+
+Remember:
+
+Sensitivity: Minimize *false negatives* by making this as high as possible. Maximizing true positives.
+Specificity: Minimize *false positives* by making this as high as possible. Maximize true negatives.
+
+In the code below, I'm running a bunch of different cutoffs to calculate sensitivity and specificity using the `confusionMatrix()` function built into the `e1071` package. 
+
+```{r}
+truth <- factor(shhs_test_data$any_cvd, levels=c("Yes","No"))
+#seq() function allows us to make a sequence of cutoffs
+cutoffs <- seq(from=0.01,to=1, by = 0.05)
+cutoffs
+```
+
+I've defined a function called `build_cutoff_frame()` (the code is `R/helper.R`) that takes a cutoff and gives us the output of the `confusionMatrix` function.
+
+Now we can run our function over all the cutoffs, extract the sensitivity and specificity for each cutoff, and then put everything together into a `data.frame` called `cutoff_frame`.
+
+```{r}
+#run our function on all of our cutoffs
+#the output is a list of confusion matrices
+cutoff_frame <- build_cutoff_frame(cutoffs,
+                                   pred_prob=model_predicted_prob, truth=truth)
+
+cutoff_frame
+```
+
+## ROC Curves (the hard way)
+
+Now, let's do something with these cutoffs and sensitivity/specificities.
+
+To see how the cutoff affects our sensitivity and specificity, we can plot what is called an Receiver Operating Characteristic (ROC) curve, which plots `1-specificity` on the x axis, and `sensitivity` on the y-axis.
+
+I'm using an additional library called `plotly` here that can give you tooltips when you mouse over a point. To add sensitivity and specificity, note I'm mapping them as aesthetics in the `ggplot()` statement. 
+
+`plotly::ggplotly` will attempt to take a ggplot and make it into an interactive plot. We can control what variables the tooltip shows with the `tooltip` argument.
+
+Pick a point that maximizes sensitivity - what is the cost to the specificity?
+
+Likewise, pick a point that maximizes specificity - what is the cost to sensitivity?
+
+In picking a cutoff value for our model, we must try to prioritize senstivity or specificity while accepting a dip in the other value. We probably don't want select a cutoff where Sensitivity or Specificity = 1. As an example, we want to pick a threshold that maximizes sensitivity while also trying to keep a reasonable value for our specificity.
+
+```{r}
+library(ggplot2)
+library(plotly)
+roc_plot <- cutoff_frame %>% ggplot(aes(x=1-specificity, y=sensitivity, cutoff=cutoff, specificity=specificity)) + geom_point() + ggtitle("ROC Curve for Age + Gender Model") + xlim(c(0,1)) + ylim(c(0,1))
+
+plotly::ggplotly(roc_plot, tooltip=c("cutoff", "sensitivity", "specificity")) 
+```
+
+## Is there an optimal cutoff on the ROC curve?
+
+I really caution you against trying to balance sensitivity versus specificity without thinking about the values of your stakeholders. 
+
+Part of your value as an analyst is translating organizational values and making the models meaningful in that light. 
+
+Technically, you can balance specificity and sensitivity of your model by taking the point closest to the top right corner, but this balance probably does not speak to the values of your organization or stakeholders.

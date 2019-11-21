@@ -1,6 +1,6 @@
 ---
 title: Clinical Data Wrangling Workshop
-author: "Ted Laderas, Nicole Weiskopf, Aaron Coyner, and Eilis Boudreau"
+author: "Ted Laderas, Nicole Weiskopf, Aaron Coyner, Aurora Blucher, and Eilis Boudreau"
 output: 
   html_document:
     toc: true
@@ -9,7 +9,7 @@ output:
 
 <img src="img/1.png" height="400px">
 
-The following is the site for the materials for the clinical data wrangling workshop. This is a 12 hour workshop (spread over 4 days) where students got to work with a real research dataset (the [Sleep Heart Health Study](http://sleepdata.org) data). 
+The following is the site for the materials for the clinical data wrangling workshop. This is a 10 hour workshop (spread over 4 days) where students got to work with a real research dataset (the [Sleep Heart Health Study](http://sleepdata.org) data). 
 
 This is a workshop that we developed as part of an National Library of Medicine T15 training supplement in Data Science. The following is a short report describing the workshop and its outcomes.
 
@@ -23,20 +23,22 @@ We have included our [Code of Conduct](slides/CODE_OF_CONDUCT.pdf) for the works
 
 ## Learning Objectives
 
-1. Understand the biology of sleep and sleep apnea and how the biology informs the covariates measured in the Sleep Heart Health Study
-2. Understand why clinical data is useful and also why it's difficult to work with
-3. Learn Exploratory Data Analysis techniques and use them to inform model building.
-4. Learn to assess logistic regression models using simple diagnostics.
+1. **Understand** biological and clinical concepts that are relevant to sleep apnea and cardiovascular disease.
+2. **Explore** the Sleep Heart Health Study (SHHS) dataset in light of these concepts as teams.
+3. **Evaluate** *fitness for use* of covariates in the mode based on the clinical data wrangling framework in order to select appropriate covariates.
+4. **Build** and **evaluate** a predictive model based on the decisions made in 3).
+5. **Communicate** and **compare** model results with other teams.
+
 
 ## The Dataset
 
 We used the [Sleep Heart Health Study](https://sleepdata.org/datasets/shhs) dataset from the [National Sleep Research Resource](https://sleepdata.org). This is a dataset of approximately 5800 patients that have over 3000 covariates. We limited our students to a smaller number of covariates (17), including our outcome of interest, cardiovascular disease.
 
-**Please note that the dataset is not currently available in the repository**. A Data Access and Use Agreement (DAUA, see below) needs to be filled out for each student who wishes to access the SHHS dataset.
+**Please note that the dataset is not currently available in the lesson repository**. A Data Access and Use Agreement (DAUA, see below) needs to be filled out for each student who wishes to access the SHHS dataset.
 
 ## Requirements
 
-1. Students must have R/Rstudio installed (See [installation instructions](install/installing_R_Rstudio.pdf))
+1. Students must have R/Rstudio installed on their computers (See [installation instructions](install/installing_R_Rstudio.pdf))
 
 Additionally, students should run the following commands in their console to install needed packages:
 
@@ -84,8 +86,8 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
   <tr>
     <td class="tg-0pky">1a </td>
     <td class="tg-0pky"><a href="slides/session_1a-introduction_to_sleep_apnea.pdf">Biology of Sleep and Cardiovascular Disease</a></td>
-    <td class="tg-0pky">Lecture</td>
-    <td class="tg-0pky">40 min</td>
+    <td class="tg-0pky">Lecture with questions</td>
+    <td class="tg-0pky">30 min</td>
   </tr>
   <tr>
     <td class="tg-0pky">Break</td>
@@ -103,23 +105,17 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
     <td class="tg-0lax">2a</td>
     <td class="tg-0lax"><a href="slides/session_2b-data_exploration_and_wrangling.pdf">Exploring the Sleep Heart Health Study Dataset</a></td>
     <td class="tg-0lax">Data<br>Scavenger<br>Hunt</td>
-    <td class="tg-0lax">60 min</td>
+    <td class="tg-0lax">90 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">Break</td>
     <td class="tg-0lax">Lunch Break (with optional <a href="install/installing_R_Rstudio.pdf">R install session)</a></td>
     <td class="tg-0lax">NA</td>
-    <td class="tg-0lax">90 min</td>
+    <td class="tg-0lax">60 min</td>
   </tr>
   <tr>
     <td class="tg-0lax">2b</td>
-    <td class="tg-0lax"><a href="slides/session_2a-intro_to_ehr_data_quality.pdf">Clinical Data Quality Issues</a></td>
-    <td class="tg-0lax">Lecture</td>
-    <td class="tg-0lax">40 min</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">3a</td>
-    <td class="tg-0lax"><a href="slides/session_3a-diabetes_demonstration.pdf">Applying the Clinical Wrangling Process: <br>Diabetes</a></td>
+    <td class="tg-0lax"><a href="slides/session_2a-intro_to_ehr_data_quality.pdf">Clinical Data Quality Issues/Applying the Clinical Wrangling Process</a></td>
     <td class="tg-0lax">Lecture</td>
     <td class="tg-0lax">45 min</td>
   </tr>
@@ -127,7 +123,7 @@ We designed the workshop to be a mix of didactic lectures and active learning ex
     <td class="tg-0lax">3b</td>
     <td class="tg-0lax"><a href="notebooks/predictive_model.nb.html">Logistic Regression Model Basics</a></td>
     <td class="tg-0lax">R Notebook</td>
-    <td class="tg-0lax">60 min</td>
+    <td class="tg-0lax">90 min</td>
   </tr>
 </table>
 

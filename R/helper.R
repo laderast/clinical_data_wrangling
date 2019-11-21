@@ -111,3 +111,33 @@ data_dictionary <- function(input, output, session, data_dict){
     
   })
 }
+
+# this function will produce a confusion matrix
+# for a particular cutoff
+run_cutoff <- function(cutoff, pred_prob, truth){
+  #Do thresholding with cutoff       
+  predictions <- ifelse(pred_prob < cutoff, "No", "Yes")
+  #run confusion matrix on predictions
+  caret::confusionMatrix(
+    factor(predictions, levels=c("Yes", "No")), 
+    truth, 
+    positive="Yes")
+}
+
+build_cutoff_frame <- function(cutoffs, pred_prob, truth){
+  confusion_matrices <- lapply(cutoffs, run_cutoff, pred_prob=pred_prob, truth=truth)
+  
+  #get the sensitivity out of the list of confusion matrices
+  sensitivities <- lapply(confusion_matrices, function(x){return(x$byClass["Sensitivity"])})
+  
+  #get the sensitivity out of the list of confusion matrices
+  specificities <- lapply(confusion_matrices, function(x){return(x$byClass["Specificity"])})
+  
+  #make sensitivities and specificities into vectors
+  sensitivities <- unlist(sensitivities)
+  specificities <- unlist(specificities)
+  
+  #produce a data frame with all of the cutoffs
+  cutoff_frame <- data.frame(cutoff=cutoffs, sensitivity =sensitivities, specificity = specificities)
+  cutoff_frame
+}
